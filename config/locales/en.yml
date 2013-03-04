@@ -1,0 +1,7 @@
+# English strings go here for Rails i18n
+en:
+  label_view_my_projects: "View My Projects"
+  label_view_all_projects: "View All Projects"
+  label_project_view: "Project View"
+  my_projects_label_account_settings: "Project List"
+  field_show_projects: "Default project view"

@@ -1,0 +1,9 @@
+</fieldset>
+<fieldset class="box">
+	<legend><%=l(:label_project_view)%></legend>
+	<div class="tabular">
+		<%= labelled_fields_for :pref, @user.pref do |pref_fields| %>
+			<p><%= pref_fields.select :show_projects, options_for_select([[l(:label_view_all_projects), 'all'], [l(:label_view_my_projects), 'my_projects']], @user.pref[:show_projects])%></p>
+		<% end %>
+	</div>
+</fieldset>
