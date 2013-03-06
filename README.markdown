@@ -9,6 +9,10 @@ viewing only a user's projects.  If the user changes views, it will be
 remembered in a session store.  The default value is added as an account 
 setting.
 
+This plugin also adds the ability to define a list of favorite projects to 
+display on the project list.  A project can be added or removed from it's 
+overview page.
+
 It is written for Redmine 2.3.x and tested on 2.2.x, other versions may or may 
 not work.
 

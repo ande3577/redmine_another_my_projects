@@ -2,6 +2,11 @@
 en:
   label_view_my_projects: "View My Projects"
   label_view_all_projects: "View All Projects"
+  label_view_favorites: "View Favorites"
   label_project_view: "Project View"
   my_projects_label_account_settings: "Project List"
   field_show_projects: "Default project view"
+  label_favorites: "Favorites"
+  label_add_to_favorites: "Add to favorites"
+  label_remove_from_favorites: "Remove from favorites"
+  

@@ -3,7 +3,10 @@
 	<legend><%=l(:label_project_view)%></legend>
 	<div class="tabular">
 		<%= labelled_fields_for :pref, @user.pref do |pref_fields| %>
-			<p><%= pref_fields.select :show_projects, options_for_select([[l(:label_view_all_projects), 'all'], [l(:label_view_my_projects), 'my_projects']], @user.pref[:show_projects])%></p>
+		  <% select_options = [[l(:label_view_all_projects), 'all'], [l(:label_view_my_projects), 'my_projects']] %>
+	    <% select_options << [l(:label_view_favorites), 'favorites'] if @user.allowed_to?(:manage_favorites, nil, { :global => true })  %>
+		
+			<p><%= pref_fields.select :show_projects, options_for_select(select_options, @user.pref[:show_projects])%></p>
 		<% end %>
 	</div>
 </fieldset>

@@ -28,15 +28,35 @@ module MyProjectsControllerPatch
       end
     end
     
-    if !@show.nil? && @show.eql?('my_projects')
+    case @show
+    when 'my_projects'
       if User.current().logged?
+         respond_to do |format|
+           format.html {
+             scope = User.current().projects
+             unless params[:closed]
+               scope = scope.active
+             end
+             @projects = scope.visible.order('lft').all
+             render :index
+             return false
+           }
+         end
+       else
+         deny_access
+         return false
+       end
+    when 'favorites'
+      if User.current().logged? && User.current.allowed_to?(:manage_favorites, nil, { :global => true })
         respond_to do |format|
           format.html {
-            scope = User.current().projects
+            logger.debug "visible = #{Project.visible.inspect}"
+            logger.debug "favorites = #{FavoriteProject.all.inspect}"
+            scope = User.current().favorite_projects
             unless params[:closed]
               scope = scope.active
             end
-            @projects = scope.visible.order('lft').all
+            @projects = scope.order('lft').all
             render :index
             return false
           }
@@ -45,17 +65,19 @@ module MyProjectsControllerPatch
         deny_access
         return false
       end
-    elsif @show.nil? || @show.eql?('all')
-      return true;
+    when 'all'
+    when nil
+      return true
+    else
+      render_404
+      return false
     end
-    render_404
-    return false
   end
   
   private
   def show_valid(show)
     # nil considered valid since it will load the user setting
-    return show.nil? || show.eql?('my_projects') || show.eql?('all')
+    return show.nil? || show.eql?('my_projects') || show.eql?('all') || show.eql?('favorites')
   end
   
 end
