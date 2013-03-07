@@ -13,7 +13,7 @@ class FavoriteProjectsController < ApplicationController
     
     @favorite = FavoriteProject.create(:user => User.current, :project => @project)
     respond_to do |format|
-      format.html { redirect_to :controller => :projects, :action => :show, :id => @project.id }
+      format.html { redirect_to :controller => :projects, :action => :show, :id => @project.identifier }
     end
   end
 
@@ -34,7 +34,7 @@ class FavoriteProjectsController < ApplicationController
     @favorite.destroy
     
     respond_to do |format|
-      format.html { redirect_to :controller => :projects, :action => :show, :id => @project.id }
+      format.html { redirect_to :controller => :projects, :action => :show, :id => @project.identifier }
     end
   end
   

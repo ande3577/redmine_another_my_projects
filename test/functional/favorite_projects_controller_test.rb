@@ -46,7 +46,7 @@ class FavoriteProjectsControllerTest < ActionController::TestCase
     @role.add_permission!(:manage_favorites)
     post :create, :controller => :favorite_projects, :project_id => @project.id
     assert_response 302
-    assert_redirected_to :controller => :projects, :action => :show, :id=>@project.id
+    assert_redirected_to :controller => :projects, :action => :show, :id=>@project.identifier
     assert assigns[:favorite]
     assert_equal assigns[:favorite].user_id, @user.id
     assert_equal assigns[:favorite].project_id, @project.id
@@ -57,7 +57,7 @@ class FavoriteProjectsControllerTest < ActionController::TestCase
     @role.add_permission!(:manage_favorites)
     post :create, :controller => :favorite_projects, :project_id => @public_project.id
     assert_response 302
-    assert_redirected_to :controller => :projects, :action => :show, :id=>@public_project.id
+    assert_redirected_to :controller => :projects, :action => :show, :id=>@public_project.identifier
     assert assigns[:favorite]
     assert_equal assigns[:favorite].user_id, @user.id
     assert_equal assigns[:favorite].project_id, @public_project.id
@@ -70,7 +70,7 @@ class FavoriteProjectsControllerTest < ActionController::TestCase
     @role.add_permission!(:manage_favorites)
     post :create, :controller => :favorite_projects, :project_id => @project.id
     assert_response 302
-    assert_redirected_to :controller => :projects, :action => :show, :id=>@project.id
+    assert_redirected_to :controller => :projects, :action => :show, :id=>@project.identifier
     assert_equal 1, FavoriteProject.count
   end
   
@@ -95,7 +95,7 @@ class FavoriteProjectsControllerTest < ActionController::TestCase
     
     assert_equal 1, FavoriteProject.count
     delete :destroy, :controller => :favorite_projects, :id => @favorite.id
-    assert_redirected_to :controller => :projects, :action => :show, :id=>@project.id
+    assert_redirected_to :controller => :projects, :action => :show, :id=>@project.identifier
     assert_equal 0, FavoriteProject.count
   end
   
