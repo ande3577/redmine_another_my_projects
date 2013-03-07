@@ -1,3 +1,5 @@
+require 'project'
+
 module MyProjectsUserPatch
   def self.included(base)
     unloadable
