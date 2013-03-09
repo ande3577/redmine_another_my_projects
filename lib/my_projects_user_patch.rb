@@ -1,4 +1,6 @@
-require 'project'
+if Redmine::VERSION::MAJOR <= 2 && Redmine::VERSION::MINOR <= 2
+  require 'project' 
+end
 
 module MyProjectsUserPatch
   def self.included(base)
