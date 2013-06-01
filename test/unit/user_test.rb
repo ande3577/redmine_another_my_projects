@@ -24,6 +24,22 @@ class UserTest < ActiveSupport::TestCase
     assert_equal @project, @user.favorite_projects.first
   end
   
+  def test_destroy_user
+    FavoriteProject.create(:user => @user, :project => @project)
+    
+    id = @user.id
+    @user.destroy
+    assert FavoriteProject.where(:user_id => id).empty?
+  end
+  
+  def test_destroy_project # tested here since test setup is complete, and I'm too lazy to create a whole new test module
+    FavoriteProject.create(:user => @user, :project => @project)
+    
+    id = @project.id
+    @project.destroy
+    assert FavoriteProject.where(:project_id => id).empty?  
+  end
+  
   def test_is_not_favorite
     assert !@user.is_favorite?(@project)
   end

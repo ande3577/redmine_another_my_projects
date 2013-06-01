@@ -2,6 +2,7 @@ require_dependency 'my_projects_controller_patch'
 require_dependency 'my_projects_helper_patch'
 require_dependency 'my_projects_hooks'
 require_dependency 'my_projects_user_patch'
+require_dependency 'my_projects_project_patch'
 
 Redmine::Plugin.register :redmine_another_my_projects do
   permission :manage_favorites, { :favorite_projects => [:create, :destroy] }, :require => :loggedin
