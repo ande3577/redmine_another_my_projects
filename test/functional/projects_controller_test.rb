@@ -16,8 +16,9 @@ class ProjectsControllerTest < ActionController::TestCase
   # Replace this with your real tests.
   def test_my_projects_as_anon
     get :index, :controller => :projects, :show => 'my_projects' 
-    assert_response 302
-    assert_redirected_to :controller => :account, :action => :login, :back_url => "http://test.host/projects?show=my_projects"
+    assert_response 200
+    assert_equal Project.where(:is_public => true).size, assigns[:projects].size
+    assert_equal 'all', assigns[:show]
   end
   
   def test_my_projects_as_user
@@ -56,14 +57,17 @@ class ProjectsControllerTest < ActionController::TestCase
   
   def test_show_favorites_as_anon
     get :index, :controller => :projects, :show => 'favorites' 
-    assert_response 302
-    assert_redirected_to :controller => :account, :action => :login, :back_url => "http://test.host/projects?show=favorites"
+    assert_response 200
+    assert_equal Project.where(:is_public => true).size, assigns[:projects].size
+    assert_equal 'all', assigns[:show]
   end
   
   def test_show_favorites_without_permission
     @request.session[:user_id] = @user.id
     get :index, :controller => :projects, :show => 'favorites'
-    assert_response 403
+    assert_response 200
+    assert_equal (Project.where(:is_public => true) + @user.projects).uniq.size, assigns[:projects].size, "get all projects is not specified"
+    assert_equal 'all', assigns[:show]
   end
   
   def test_show_favorites
