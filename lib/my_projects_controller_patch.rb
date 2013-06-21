@@ -43,8 +43,8 @@ module MyProjectsControllerPatch
            }
          end
        else
-         deny_access
-         return false
+         @show = 'all'
+         return true
        end
     when 'favorites'
       if User.current().logged? && User.current.allowed_to?(:manage_favorites, nil, { :global => true })
@@ -62,8 +62,8 @@ module MyProjectsControllerPatch
           }
         end
       else
-        deny_access
-        return false
+        @show = 'all'
+        return true
       end
     when 'all'
     when nil
