@@ -18,6 +18,16 @@ not work.
 
 Please report issues to: 
   https://github.com/ande3577/redmine_another_my_projects/issues
+  
+### Project List
+
+![ProjectList](img/project_list.png "Project List")
+
+### Project Overview
+
+Allows adding a project to favorites.
+
+![ProjectOverview](img/project_overview.png "Project Overview")
 
 ## Installation
 
