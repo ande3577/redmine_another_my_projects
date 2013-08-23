@@ -22,7 +22,7 @@ module MyProjectsControllerPatch
     if User.current().logged?
       if @show.nil?
         @show = session[:projects_show]
-        @show = User.current.pref[:show_projects] if @show.nil?
+        @show ||= User.current.pref[:show_projects]
       else
         session[:projects_show] = @show if show_valid(@show)
       end
