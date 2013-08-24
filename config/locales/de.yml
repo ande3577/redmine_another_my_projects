@@ -1,0 +1,11 @@
+# German strings go here for Rails i18n
+en:
+  label_view_my_projects: "Meine Projekte anzeigen"
+  label_view_all_projects: "Alle Projekte anzeigen"
+  label_view_favorites: "Favoriten anzeigen"
+  label_project_view: "Projektansicht"
+  my_projects_label_account_settings: "Projektliste"
+  field_show_projects: "Standard Projektansicht"
+  label_favorites: "Favoriten"
+  label_add_to_favorites: "Zu Favoriten hinzufügen"
+  label_remove_from_favorites: "Von Favoriten entfernen"
