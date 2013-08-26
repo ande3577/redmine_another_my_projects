@@ -1,12 +1,12 @@
 # English strings go here for Rails i18n
 en:
-  label_view_my_projects: "View My Projects"
+  field_show_projects: "Default project view"
+  label_add_to_favorites: "Add to favorites"
+  label_favorites: "Favorites"
+  label_project_view: "Project View"
+  label_remove_from_favorites: "Remove from favorites"
   label_view_all_projects: "View All Projects"
   label_view_favorites: "View Favorites"
-  label_project_view: "Project View"
+  label_view_my_projects: "View My Projects"
   my_projects_label_account_settings: "Project List"
-  field_show_projects: "Default project view"
-  label_favorites: "Favorites"
-  label_add_to_favorites: "Add to favorites"
-  label_remove_from_favorites: "Remove from favorites"
   permission_manage_favorites: "Manage favorites"
