@@ -9,3 +9,4 @@ en:
   label_favorites: "Favorites"
   label_add_to_favorites: "Add to favorites"
   label_remove_from_favorites: "Remove from favorites"
+  permission_manage_favorites: "Manage favorites"
