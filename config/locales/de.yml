@@ -1,5 +1,5 @@
 ﻿# German strings go here for Rails i18n
-en:
+de:
   field_show_projects: "Standard Projektansicht"
   label_add_to_favorites: "Zu Favoriten hinzufügen"
   label_favorites: "Favoriten"
