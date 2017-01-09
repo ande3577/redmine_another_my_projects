@@ -16,6 +16,7 @@ module MyProjectsControllerPatch
   end
   
   def my_projects
+    return true unless request.format.html?
 
     @show = params[:show]
     
